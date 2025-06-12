@@ -42,6 +42,8 @@
         /* Header minimalista */
         header {
             position: fixed;
+            display: flex;
+            align-items: center;
             top: 0;
             width: 100%;
             backdrop-filter: blur(20px);
@@ -175,7 +177,7 @@
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 1px;
-            cursor: none;
+            cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
@@ -310,7 +312,7 @@
             font-weight: 500;
             border: 1px solid rgba(149, 157, 144, 0.2);
             transition: all 0.3s ease;
-            cursor: none;
+            cursor: default;
         }
 
         .skill-tag:hover {
@@ -319,6 +321,57 @@
             color: var(--white);
             box-shadow: var(--shadow);
         }
+        
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .portfolio-item {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .portfolio-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .portfolio-description {
+            font-size: 1rem;
+            color: var(--accent);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        
+        .portfolio-item .btn-outline {
+             margin-top: auto;
+             align-self: flex-start;
+        }
+
 
         /* Experience Section Minimalista */
         .experience-timeline {
@@ -409,14 +462,6 @@
             padding-left: 20px;
         }
 
-        .timeline-description li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-
         /* Contact Section Futurística */
         .contact {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
@@ -460,7 +505,6 @@
             padding: 30px 20px;
             border-radius: 15px;
             transition: all 0.3s ease;
-            cursor: none;
         }
 
         .contact-item:hover {
@@ -472,6 +516,19 @@
             font-size: 2rem;
             margin-bottom: 15px;
             display: block;
+            height: 32px; /* Set a fixed height for alignment */
+            line-height: 32px;
+        }
+        
+        .contact-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--white);
+            transition: fill 0.3s ease;
+        }
+        
+        .contact-item:hover .contact-icon svg {
+            fill: var(--cream);
         }
 
         .contact-item a {
@@ -622,9 +679,9 @@
 
     <header>
         <nav>
-            <a href="#" class="logo">CD</a>
             <ul class="nav-links">
                 <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
                 <li><a href="#experiencia">Experiência</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
@@ -633,16 +690,14 @@
 
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-subtitle">Engenheira de Dados</div>
+            <div class="hero-subtitle">Business Intelligence | Engenharia de Dados</div>
             <h1 class="hero-title">Clarissa<br>Daltro</h1>
             <p class="hero-description">
                 Transformando dados em insights estratégicos através de soluções inovadoras de ETL, 
-                Business Intelligence e Analytics para empresas do setor bancário e telecomunicações.
+                Business Intelligence e Analytics.
             </p>
             <div class="hero-cta">
-                <a href="#experiencia" class="btn btn-primary">Ver Portfolio</a>
-                <a href="#contato" class="btn btn-outline">Contato</a>
-            </div>
+                </div>
         </div>
     </section>
 
@@ -650,14 +705,19 @@
         <h2 class="section-title">Sobre</h2>
         <div class="about-grid">
             <div class="about-text">
-                <p>Especialista em Engenharia de Dados com expertise em desenvolvimento de pipelines ETL, 
-                modelagem de dados e criação de soluções de Business Intelligence para grandes volumes de dados.</p>
+                <p>Com expertise no desenvolvimento de pipelines de ETL, modelagem de dados e criação de soluções de 
+                Business Intelligence para grandes volumes de dados, sou especialista em transformar dados brutos em 
+                insights de negócio. Minha paixão é transformar a complexidade em simplicidade, criando sistemas 
+                eficientes que geram valor e direcionam o crescimento.</p>
                 
-                <p>Atualmente na EY Brasil, trabalho com clientes do setor bancário desenvolvendo soluções 
-                escaláveis e automatizadas que impulsionam decisões estratégicas baseadas em dados.</p>
+                <p>Atualmente na EY Brasil, atuo como Engenheira de Dados em projetos de Tech Consulting (AI & Data) para 
+                grandes clientes do setor bancário. Meu foco é o desenvolvimento de soluções escaláveis e automatizadas 
+                que impulsionam decisões estratégicas.</p>
                 
-                <p>Minha paixão é transformar complexidade em simplicidade, criando sistemas eficientes 
-                que conectam dados brutos a insights acionáveis para o negócio.</p>
+                <p>Tenho como principal motivação resolver problemas complexos através da tecnologia. Acredito 
+                que o verdadeiro potencial dos dados é desbloqueado quando transformamos grandes volumes de informação 
+                em sistemas eficientes e automatizados. Meu objetivo é contribuir continuamente para o aprimoramento de 
+                processos, garantindo que a tecnologia gere um valor real e mensurável.</p>
             </div>
             
             <div class="skills-container">
@@ -689,8 +749,24 @@
                         <h4>Infraestrutura</h4>
                         <div class="skill-tags">
                             <span class="skill-tag">Oracle Database</span>
+                            <span class="skill-tag">PostgreSQL</span>
                             <span class="skill-tag">SAP</span>
-                            <span class="skill-tag">Cloud</span>
+                            <span class="skill-tag">Databricks</span>
+                            <span class="skill-tag">Google Cloud Platform</span>
+                            <span class="skill-tag">Azure</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>Ferramentas e Processos</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Spark</span>
+                            <span class="skill-tag">GitLab</span>
+                            <span class="skill-tag">Scrum</span>
+                            <span class="skill-tag">Jira</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Yellow Belt - Lean Six Sigma</span>
+
                         </div>
                     </div>
                 </div>
@@ -698,16 +774,63 @@
         </div>
     </section>
 
+    <section id="portfolio" class="section">
+        <h2 class="section-title">Portfólio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Panorama da Inadimplência</h3>
+                    <p class="portfolio-description">
+                         Projeto focado na análise de inadimplência 
+                         no setor bancário. Envolveu coleta e tratamento de dados públicos, identificação de perfis de risco, 
+                         análise de métricas relevantes e projeções com base em padrões históricos. As visualizações interativas 
+                         foram desenvolvidas no Power BI para apoiar decisões estratégicas de crédito.
+                    </p>
+                    <a href="https://app.powerbi.com/view?r=eyJrIjoiNTgzNjRmZmMtMWEwMS00ZTY1LWIzYTctNjEzMjA2ZDdmM2JkIiwidCI6ImIxNjc4ZGFkLTEzZTktNGM4My05OGFlLTc3Nzg5ZDQ4MjAyNSJ9&pageName=392a4f56178ee2f6bedc" class="btn btn-outline" target="_blank">Ver Projeto</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Acompanhamento de Instalações</h3>
+                    <p class="portfolio-description">
+                        Dashboard desenvolvido no Power BI para identificar e monitorar irregularidades em instalações de equipamentos. 
+                        A visualização permite estratificar os dados por modelo, data de instalação, tecnologia e função, além de 
+                        exibir uma listagem analítica com filtros interativos. O foco do projeto foi proporcionar 
+                        uma navegação intuitiva e dinâmica, facilitando a análise detalhada e o acompanhamento de conformidades.
+
+
+                    </p>
+                    <a href="https://app.powerbi.com/view?r=eyJrIjoiYmFiZDg3NTQtMjI0MC00Y2M2LWIyNTEtNzVhMzlhYWQ1MzBmIiwidCI6ImIxNjc4ZGFkLTEzZTktNGM4My05OGFlLTc3Nzg5ZDQ4MjAyNSJ9" class="btn btn-outline" target="_blank">Ver Projeto</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Indicadores Suporte TI</h3>
+                    <p class="portfolio-description">
+                        Dashboard desenvolvido no Power BI para monitorar o desempenho do setor de TI, com foco 
+                        no atendimento de chamados. Utiliza uma base fictícia gerada com inteligência artificial e 
+                        hospedada no SharePoint. O projeto envolveu tratamento de dados, definição de indicadores 
+                        de SLA e criação de visões analíticas por período, setor, região e performance da 
+                        equipe de TI, facilitando a gestão e identificação de gargalos no atendimento.
+                    </p>
+                    <a href="https://app.powerbi.com/groups/me/reports/f948f79c-abcd-44f4-8fee-fbe05d32ebb1/b0fdd932fb24b6b70701?experience=power-bi" class="btn btn-outline" target="_blank">Ver Projeto</a>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="experiencia" class="section">
         <h2 class="section-title">Experiência</h2>
         <div class="experience-timeline">
             <div class="timeline-item">
                 <div class="timeline-content">
                     <h3 class="timeline-title">Engenheira de Dados</h3>
-                    <div class="timeline-company">EY Brasil</div>
+                    <div class="timeline-company">EY (Brasil)</div>
                     <div class="timeline-period">Fev 2025 - Presente</div>
                     <ul class="timeline-description">
-                        <li>Desenvolvimento de pipelines ETL para grandes volumes de dados bancários</li>
+                        <div>Atuação na área de Tech Consulting - AI & Data, integrando projetos como 
+                            consultora de nível pleno para grandes clientes do setor bancário:</div>
+                        <li>Desenvolvimento e manutenção de pipelines de ETL para integração e tratamento
+                        de grandes volumes de dados</li>
                         <li>Modelagem de dados focada em escalabilidade e performance</li>
                         <li>Automação de relatórios e indicadores de negócio</li>
                         <li>Testes de integração e validação entre sistemas complexos</li>
@@ -721,8 +844,10 @@
                     <div class="timeline-company">Vivo (Telefônica Brasil)</div>
                     <div class="timeline-period">Ago 2023 - Dez 2024</div>
                     <ul class="timeline-description">
+                        <div>Atuação na VP Negócios (Consumer Regional Leste), integrando a célula de 
+                            inteligência operacional:</div>
                         <li>Criação de dashboards interativos em Power BI</li>
-                        <li>Desenvolvimento de consultas SQL complexas</li>
+                        <li>Desenvolvimento de consultas SQL</li>
                         <li>Integração de dados de múltiplas fontes (SAP, Oracle, Excel)</li>
                         <li>Otimização de KPIs operacionais da área comercial</li>
                     </ul>
@@ -735,6 +860,7 @@
                     <div class="timeline-company">Ipiranga Produtos de Petróleo</div>
                     <div class="timeline-period">Ago 2020 - Mai 2022</div>
                     <ul class="timeline-description">
+                        <div>Atuação na área comercial da Ipiranga Logística, voltada para o mercado B2B:</div>
                         <li>Análise de KPIs de performance financeira</li>
                         <li>Gestão e controle de orçamento anual</li>
                         <li>Automação de processos contábeis e financeiros</li>
@@ -751,18 +877,24 @@
         
         <div class="contact-grid">
             <div class="contact-item">
-                <span class="contact-icon">✉️</span>
-                <a href="mailto:clarissadaltro2@gmail.com">clarissadaltro2@gmail.com</a>
+                 <span class="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-1.02-.01-2.02-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C21.13 20.17 24 16.42 24 12c0-5.52-4.48-10-10-10z"/></svg>
+                </span>
+                <a href="https://github.com/clarissadaltro/portfolio-projects" target="_blank">GitHub</a>
             </div>
             
             <div class="contact-item">
-                <span class="contact-icon">💼</span>
+                <span class="contact-icon">
+                    <svg height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 382 382" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#ffffff;" d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889 C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056 H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806 c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1 s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73 c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079 c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426 c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472 L341.91,330.654L341.91,330.654z"></path> </g></svg>
+                </span>
                 <a href="https://linkedin.com/in/clarissadaltro" target="_blank">LinkedIn</a>
             </div>
-            
-            <div class="contact-item">
-                <span class="contact-icon">🔗</span>
-                <a href="https://github.com/clarissadaltro/portfolio-projects" target="_blank">GitHub</a>
+
+             <div class="contact-item">
+                <span class="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+                </span>
+                <a href="mailto:clarissadaltro2@gmail.com">clarissadaltro2@gmail.com</a>
             </div>
         </div>
     </section>
@@ -795,11 +927,14 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('is-visible');
                 }
             });
         }, observerOptions);
+
+        document.querySelectorAll('.timeline-item, .about-text p, .portfolio-item').forEach(el => {
+            observer.observe(el);
+        });
 
         // Header background on scroll
         window.addEventListener('scroll', () => {
@@ -819,7 +954,7 @@
             
             floatingElements.forEach((el, index) => {
                 const speed = (index + 1) * 0.2;
-                el.style.transform = translateY(${rate * speed}px) rotate(${scrolled * 0.1}deg);
+                el.style.transform = `translateY(${rate * speed}px) rotate(${scrolled * 0.1}deg)`;
             });
         });
     </script>
